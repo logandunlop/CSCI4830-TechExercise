@@ -27,7 +27,7 @@ public class DatabaseInsertDunlop extends HttpServlet {
       String GPA = request.getParameter("GPA");
 
       Connection connection = null;
-      String insertSql = " INSERT INTO myTableDunlopTechExercise (id, FIRSTNAME, LASTNAME, EMAIL, PHONE, ADMISSION YEAR, GRADUATION YEAR, GPA) values (default, ?, ?, ?, ?, ?, ?, ?)";
+      String insertSql = " INSERT INTO MyTableDunlopTechExercise (id, FIRST_NAME, LAST_NAME, EMAIL, PHONE, ADMISSION_YEAR, GRADUATION_YEAR, GPA) values (default, ?, ?, ?, ?, ?, ?, ?)";
 
       try {
          DBConnectionDunlop.getDBConnection();

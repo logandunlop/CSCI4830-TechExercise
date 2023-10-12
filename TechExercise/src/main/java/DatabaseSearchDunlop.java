@@ -43,10 +43,10 @@ public class DatabaseSearchDunlop extends HttpServlet {
          connection = DBConnectionDunlop.connection;
 
          if (keyword.isEmpty()) {
-            String selectSQL = "SELECT * FROM myTableDunlopTechExercise";
+            String selectSQL = "SELECT * FROM MyTableDunlopTechExercise";
             preparedStatement = connection.prepareStatement(selectSQL);
          } else {
-            String selectSQL = "SELECT * FROM myTableDunlopTechExercise WHERE MYUSER LIKE ?";
+            String selectSQL = "SELECT * FROM MyTableDunlopTechExercise WHERE FIRST_NAME LIKE ?";
             String theUserName = keyword + "%";
             preparedStatement = connection.prepareStatement(selectSQL);
             preparedStatement.setString(1, theUserName);
@@ -55,12 +55,12 @@ public class DatabaseSearchDunlop extends HttpServlet {
 
          while (rs.next()) {
             int id = rs.getInt("id");
-            String firstName = rs.getString("firstName").trim();
-            String lastName = rs.getString("lastName").trim();
-            String email = rs.getString("email").trim();
-            String phone = rs.getString("phone").trim();
-            String admission = rs.getString("admission").trim();
-            String graduation = rs.getString("graduation").trim();
+            String firstName = rs.getString("FIRST_NAME").trim();
+            String lastName = rs.getString("LAST_NAME").trim();
+            String email = rs.getString("EMAIL").trim();
+            String phone = rs.getString("PHONE").trim();
+            String admission = rs.getString("ADMISSION_YEAR").trim();
+            String graduation = rs.getString("GRADUATION_YEAR").trim();
             String GPA = rs.getString("GPA").trim();
 
             if (keyword.isEmpty() || firstName.contains(keyword)) {
@@ -69,8 +69,8 @@ public class DatabaseSearchDunlop extends HttpServlet {
                out.println("Last Name: " + lastName + ", ");
                out.println("Email: " + email + ", ");
                out.println("Phone: " + phone + ", ");
-               out.println("Admission Year: " + admission + "<br>");
-               out.println("Graduation Year: " + graduation + "<br>");
+               out.println("Admission Year: " + admission + ", ");
+               out.println("Graduation Year: " + graduation + ", ");
                out.println("Grade Point Average: " + GPA + "<br>");
             }
          }
